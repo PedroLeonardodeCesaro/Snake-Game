@@ -6,7 +6,7 @@ const finalScore = document.querySelector(".final-score > span")
 const menu = document.querySelector(".menu-screen")
 const buttonPlay = document.querySelector(".btn-play")
 const bestScore = document.querySelector(".best-value")
-
+const lastScore = document.querySelector(".last-value")
 
 const audio = new Audio('./src/assets/audio.mp3')
 
@@ -156,14 +156,18 @@ const gameOver = () => {
     menu.style.display = "flex"
     canvas.style.filter = "blur(5px)"
 
+    lastScore.innerText = "00"
     finalScore.innerText = score.innerText
     if(score.innerText < "0") {
-        console.log("")
+        console.log("caralho")
     }else {
-        bestScore.innerText = score.innerText
-
+        lastScore.innerText = score.innerText
     }
     
+
+    if(lastScore.innerText <= finalScore.innerText){
+        bestScore.innerText = score.innerText
+    }
 }
 
 const gameLoop = () => {
